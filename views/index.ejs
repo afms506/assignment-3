@@ -1,63 +1,103 @@
+<!-- Include the global header (navigation bar, theme toggle, CSS, JS imports) -->
 <%- include("./partials/header") %>
 
 <div class="container page-container">
 
+    <!-- Main page title -->
     <h1 class="mb-4">Your Events</h1>
 
+    <!-- 
+        Top bar with description and "Create New Event" button.
+        Allows users to quickly add a new event.
+    -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <p class="text-muted">Manage all your upcoming events in one place.</p>
 
+        <!-- Button that opens the Add Event form -->
         <a href="/events/add" class="btn btn-primary">+ Create New Event</a>
     </div>
 
     <div class="row g-4">
 
+        <!-- 
+            If there are NO events in the database, show this message.
+            events[] is passed from eventController.listEvents
+        -->
         <% if (events.length === 0) { %>
             <p class="text-muted">No events created yet.</p>
         <% } %>
 
+        <!-- 
+            Loop through each event and display it inside a Bootstrap card.
+            This creates a responsive grid of event cards.
+        -->
         <% events.forEach(event => { %>
             <div class="col-md-4">
                 <div class="card event-card p-3 shadow-sm">
 
+                    <!-- Event name -->
                     <h4 class="mb-1"><%= event.name %></h4>
 
+                    <!-- Location + formatted date -->
                     <p class="text-muted mb-1">
-                        <%= event.location %> · <%= new Date(event.date).toLocaleDateString() %>
+                        <%= event.location %> · 
+                        <%= new Date(event.date).toLocaleDateString() %>
                     </p>
 
-                    <!-- Description -->
+                    <!-- 
+                        Event description preview 
+                        (Shows first 100 characters to keep cards clean)
+                    -->
                     <p class="small">
-                        <%= event.description ? event.description.substring(0, 100) : "No description." %>
+                        <%= event.description
+                            ? event.description.substring(0, 100)
+                            : "No description." 
+                        %>
                     </p>
 
-                    <!-- RSVP Required -->
+                    <!-- 
+                        RSVP Information
+                        Note: Your event schema does NOT include rsvpRequired,
+                        but the UI supports it if added later.
+                    -->
                     <p class="small mb-2">
                         <strong>RSVP Required:</strong>
                         <%= event.rsvpRequired ? "Yes" : "No" %>
                     </p>
 
-                    <!-- Capacity -->
+                    <!-- 
+                        Capacity bar (visual progress bar)
+                        width = percentage based on event.capacityUsed
+                        If event.capacityUsed isn’t set, fallback to 0%
+                    -->
                     <div class="capacity-bar mb-3">
                         <div class="capacity-fill" 
                              style="width: <%= event.capacityUsed || 0 %>%;"></div>
                     </div>
 
-                    <!-- Actions -->
+                    <!-- Action buttons -->
                     <div class="d-flex justify-content-between">
-                        <a href="/events/<%= event._id %>/guests" class="btn btn-primary btn-sm">
+
+                        <!-- View guest list for this event -->
+                        <a href="/events/<%= event._id %>/guests" 
+                           class="btn btn-primary btn-sm">
                             View Guests
                         </a>
 
-                        <a href="/events/edit/<%= event._id %>" class="btn btn-warning btn-sm">
+                        <!-- Edit event -->
+                        <a href="/events/edit/<%= event._id %>" 
+                           class="btn btn-warning btn-sm">
                             Edit
                         </a>
 
+                        <!-- Delete event -->
+                        <!-- delete-confirm class attaches JS confirmation -->
                         <a href="/events/delete/<%= event._id %>" 
                            class="btn btn-danger btn-sm delete-confirm">
                             Delete
                         </a>
                     </div>
+
                 </div>
             </div>
         <% }) %>
@@ -66,6 +106,8 @@
 
 </div>
 
+<!-- Delete confirmation JS -->
 <script src="/js/deleteConfirm.js"></script>
 
+<!-- Include footer -->
 <%- include("./partials/footer") %>

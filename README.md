@@ -1,191 +1,252 @@
-Live Demo
-Live Site: https://assignment-3-2-l3j6.onrender.com
-GitHub Repository: https://github.com/afms506/assignment-3
+# **Multi-Event Guest Management System**
 
-Project Overview
-The Multi-Event Guest Management System is a web-based platform that allows users to create and manage multiple events, each with its own guest list. Users can add, view, update, and delete both events and guests within a clean, responsive, Bootstrap-styled interface. This application was built as part of INFR3120 – Assignment 3 and fully satisfies the CRUD, design, routing, and database integration requirements outlined in the assignment guidelines.
+## **Live Demo**
 
-Purpose of the Project
-Managing guests across several events becomes difficult using spreadsheets or paper lists. This system centralizes all event and guest data, enabling users to:
-- Track RSVP status
-- Monitor event capacity
-- Edit guest details
-- Maintain multiple events at once
-- View organized data in a modern online interface
+**Live Site:** [https://assignment-3-2-l3j6.onrender.com](https://assignment-3-2-l3j6.onrender.com)
+**GitHub Repository:** [https://github.com/afms506/assignment-3](https://github.com/afms506/assignment-3)
 
-Target Users
-This system is intended for:
-- Students organizing school or club events
-- Individuals planning gatherings or parties
-- Small organizations hosting sessions or workshops
-- Event planners handling multiple clients
+---
 
-Features
+# **Project Overview**
 
-Event Features
-- Create new events (name, date, location, capacity, description, RSVP requirement)
-- View events in a responsive dashboard
-- Edit or delete events with confirmation
-- Capacity indicators for each event
+The Multi-Event Guest Management System is a full-stack web application that allows users to create and manage multiple events, each with its own guest list. Users can add, view, edit, and delete events and guests through a responsive Bootstrap-styled interface built with EJS templates and Express.js.
 
-Guest Features
-- Each event has its own guest list
-- Add, edit, or delete guests
-- Store name, email, phone number, RSVP status
+This project was developed for **INFR3120 – Assignment 3** and meets all requirements including CRUD operations, MongoDB integration, EJS templating, Bootstrap UI, and deployment on a cloud hosting provider.
 
-System and UI Features
-- Responsive Bootstrap 5 design
-- Custom CSS and dark/light mode toggle
-- Shared EJS partials (header and footer)
-- Delete confirmation box
-- Table sorting, search, and pagination scripts
+---
 
-Technology Stack
-Backend: Node.js, Express.js
-Database: MongoDB Atlas with Mongoose
-Frontend: EJS, Bootstrap 5, Custom CSS
-Version Control: Git & GitHub
-Deployment: Render / Azure / Heroku
-Environment Config: dotenv
+# **Purpose of the Project**
 
-Project Structurecontrollers/
+Managing events manually can become difficult when dealing with multiple guest lists. This system centralizes and organizes event and guest data, enabling users to:
 
-   eventController.js
+* Track RSVP status
+* Manage event capacity
+* Update guest information
+* Maintain multiple events at once
+* Access a centralized dashboard
 
-   guestController.js
+---
+
+# **Target Users**
+
+This application is designed for:
+
+* Students organizing school or club events
+* Individuals planning parties or gatherings
+* Small organizations hosting meetings or workshops
+* Event planners managing multiple clients
+
+---
+
+# **Features**
+
+## **Event Features**
+
+* Create new events (name, date, location, description, capacity)
+* View all events in a dashboard layout
+* Edit existing events
+* Delete events with confirmation
+
+## **Guest Features**
+
+* Each event has its own guest list
+* Add, edit, and delete guests
+* Stores name, email, phone, and RSVP
+* Event-scoped guest management
+
+## **System & UI Features**
+
+* Responsive Bootstrap 5 interface
+* Custom CSS styling
+* EJS partial templates (header/footer)
+* JavaScript delete confirmation
+* Table sorting
+* Search filter
+* Pagination script
+
+---
+
+# **Technology Stack**
+
+* **Backend:** Node.js, Express.js
+* **Frontend:** EJS, Bootstrap 5
+* **Database:** MongoDB Atlas with Mongoose
+* **Styling:** Bootstrap 5 + Custom CSS
+* **Environment Variables:** dotenv
+* **Version Control:** Git & GitHub
+* **Deployment:** Render
+
+---
+
+# **Project Structure**
+
+```
+controllers/
+    eventController.js
+    guestController.js
 
 models/
-
-   Event.js
-   
-   Guest.js
+    Event.js
+    Guest.js
 
 public/
-
-   css/style.css
-   
-   js/deleteConfirm.js
-   
-   js/pagination.js
-   
-   js/search.js
-   
-   js/tableSort.js
+    css/style.css
+    js/deleteConfirm.js
+    js/pagination.js
+    js/search.js
+    js/tableSort.js
 
 routes/
-
-   eventRoutes.js
-   
-   guestRoutes.js
+    eventRoutes.js
+    guestRoutes.js
 
 views/
-
-   events/
-   
-      add.ejs
-      
-      edit.ejs
-   
-   guests/
-   
-      add.ejs
-      
-      edit.ejs
-      
-      list.ejs
-   
-   partials/
-   
-      footer.ejs
-      
-      header.ejs
-   
-   index.ejs
+    events/
+        add.ejs
+        edit.ejs
+    guests/
+        add.ejs
+        edit.ejs
+        list.ejs
+    partials/
+        header.ejs
+        footer.ejs
+    index.ejs
 
 .env
-
 app.js
-
 package.json
+```
 
-Installation and Setup
+---
 
-1. Clone the repository
-git clone <your-repo-url>
-cd project-folder
+# **Installation and Setup**
 
-2. Install dependencies
+## **1. Clone the repository**
+
+```
+git clone https://github.com/afms506/assignment-3.git
+cd assignment-3
+```
+
+## **2. Install dependencies**
+
+```
 npm install
+```
 
-3. Create a .env file
+## **3. Create a .env file**
+
+```
 MONGO_URL=your-mongodb-connection-string
 PORT=3000
+```
 
-4. Run the server
+## **4. Start the application**
+
+```
 npm start
+```
 
-Data Models
+---
 
-Event Schema
-- name
-- date
-- location
-- description
-- rsvpRequired
-- capacity
+# **Data Models**
 
-Guest Schema
-- eventId (references Event)
-- name
-- email
-- phone
-- rsvp
+## **Event Schema**
 
-Routing Overview
+Fields:
 
-Event Routes
-GET /events – List all events
+* name
+* date
+* location
+* description
+* capacity
 
-GET /events/add – Add event form
+## **Guest Schema**
 
-POST /events/add – Create event
+Fields:
 
-GET /events/edit/:id – Edit event form
+* eventId (references Event model)
+* name
+* email
+* phone
+* rsvp
 
-POST /events/edit/:id – Update event
+---
 
-GET /events/delete/:id – Confirm delete
+# **Routing Overview**
 
-POST /events/delete/:id – Delete event
+## **Event Routes**
 
-Guest Routes
+```
+GET    /events              → List all events
+GET    /events/add          → Show "Add Event" form
+POST   /events/add          → Create new event
+GET    /events/edit/:id     → Show "Edit Event" form
+POST   /events/edit/:id     → Update event
+GET    /events/delete/:id   → Delete event
+```
 
-Same CRUD structure, tied to an event's guest list.
+## **Guest Routes**
 
-UI Design
-The application uses Bootstrap 5 with a custom design, distinct from the class example. The layout includes a dashboard for events, table views for guests, and custom styling. Dark/light mode is supported.
+```
+GET    /events/:eventId/guests              → List guests for event
+GET    /events/:eventId/guests/add          → Add guest form
+POST   /events/:eventId/guests/add          → Create guest
+GET    /events/:eventId/guests/edit/:guestId → Edit guest form
+POST   /events/:eventId/guests/edit/:guestId → Update guest
+GET    /events/:eventId/guests/delete/:guestId → Delete guest
+```
 
-Security
-- .gitignore hides sensitive files
-- .env stores credentials
-- Delete confirmation prevents accidental deletions
+---
 
-Deployment
-Hosted on a cloud provider (Render / Azure / Heroku) with a live MongoDB database and environment configuration.
+# **UI Design**
 
-Assignment Requirements Checklist
-Project Plan – Complete
-Express Application – Complete
-Bootstrap Interface – Complete
-MongoDB with Mongoose – Complete
-Home Page – Complete
-Header and Footer – Complete
-CRUD Functionality – Complete
-Delete Confirmation – Complete
-Code Commenting – Complete
-.env and .gitignore – Complete
-GitHub Repository – Complete
-Cloud Deployment – Complete
+The system uses Bootstrap 5 for layout and styling, with custom CSS for additional design requirements. All pages include a shared header and footer via EJS partials. A light/dark mode toggle is included for improved accessibility.
 
+---
 
+# **Security**
 
+* Sensitive credentials stored in `.env`
+* `.env` excluded from GitHub using `.gitignore`
+* MongoDB credentials never exposed publicly
+* Delete confirmation to prevent accidental removal
+
+---
+
+# **Deployment**
+
+The project is deployed on **Render**, using:
+
+* GitHub repository auto-deploy
+* Environment variables configured in dashboard
+* Live MongoDB Atlas cluster
+
+---
+
+# **Assignment Requirements Checklist**
+
+| Requirement         | Status   |
+| ------------------- | -------- |
+| Project Plan        | Complete |
+| Express App         | Complete |
+| Bootstrap Interface | Complete |
+| MongoDB + Mongoose  | Complete |
+| Home Page           | Complete |
+| Header & Footer     | Complete |
+| CRUD (Events)       | Complete |
+| CRUD (Guests)       | Complete |
+| Delete Confirmation | Complete |
+| Code Comments       | Complete |
+| .env + .gitignore   | Complete |
+| GitHub Repo         | Complete |
+| Cloud Deployment    | Complete |
+
+---
+
+# **Conclusion**
+
+This project demonstrates full-stack development skills using Node.js, Express.js, MongoDB, and EJS templating. It incorporates CRUD functionality, UI design principles, secure configuration management, and cloud deployment.
+
+============================================================

@@ -1,35 +1,48 @@
+<!-- Includes navigation bar, styles, dark mode toggle, etc. -->
 <%- include('../partials/header') %>
 
 <div class="container py-4">
+    <!-- Page title with event name -->
     <h2 class="mb-4">Edit Guest for <%= event.name %></h2>
 
+    <!--
+        EDIT GUEST FORM
+        Loads existing guest data into inputs.
+        POST request goes to /events/:eventId/guests/edit/:guestId
+    -->
     <form method="POST" class="p-4 shadow-sm" style="max-width: 600px; margin: auto;">
+
+        <!-- Full Name -->
         <div class="mb-3">
             <label class="form-label">Full Name</label>
             <input class="form-control" name="name" value="<%= guest.name %>" required>
         </div>
 
+        <!-- Email -->
         <div class="mb-3">
             <label class="form-label">Email</label>
             <input class="form-control" name="email" value="<%= guest.email %>">
         </div>
 
+        <!-- Phone -->
         <div class="mb-3">
             <label class="form-label">Phone</label>
             <input class="form-control" name="phone" value="<%= guest.phone %>">
         </div>
 
+        <!-- RSVP dropdown -->
         <div class="mb-3">
             <label class="form-label">RSVP</label>
             <select class="form-control" name="rsvp">
-                <option <%= guest.rsvp === "Yes" ? "selected" : "" %> value="Yes">Yes</option>
-                <option <%= guest.rsvp === "No" ? "selected" : "" %> value="No">No</option>
-                <option <%= guest.rsvp === "Maybe" ? "selected" : "" %> value="Maybe">Maybe</option>
+                <option value="Yes" <%= guest.rsvp === "Yes" ? "selected" : "" %>>Yes</option>
+                <option value="No" <%= guest.rsvp === "No" ? "selected" : "" %>>No</option>
             </select>
         </div>
 
+        <!-- Save button -->
         <button class="btn btn-primary w-100">Save</button>
     </form>
 </div>
 
+<!-- Footer -->
 <%- include('../partials/footer') %>

@@ -1,36 +1,53 @@
+<!-- Include the shared header (navigation, styles, scripts) -->
 <%- include('../partials/header') %>
 
 <div class="container mt-5" style="max-width: 700px;">
+
+    <!-- Page Title -->
     <h2 class="mb-4">Add Event</h2>
 
+    <!-- 
+        Event Creation Form
+        Method: POST → handled by POST /events/add
+        - Required fields: name, date, capacity
+        - Uses Bootstrap styling + custom card look
+    -->
     <form method="POST" class="p-4 shadow-sm rounded bg-white dark:bg-dark card-border">
+
+        <!-- Event Name -->
         <div class="mb-3">
             <label class="form-label fw-bold">Event Name</label>
             <input class="form-control" name="name" required>
         </div>
 
+        <!-- Description (optional) -->
         <div class="mb-3">
             <label class="form-label fw-bold">Description</label>
             <textarea class="form-control" name="description" rows="3"></textarea>
         </div>
 
+        <!-- Location (optional) -->
         <div class="mb-3">
             <label class="form-label fw-bold">Location</label>
             <input class="form-control" name="location">
         </div>
 
+        <!-- Date of Event -->
         <div class="mb-3">
             <label class="form-label fw-bold">Date</label>
             <input type="date" class="form-control" name="date" required>
         </div>
 
+        <!-- Capacity (must be at least 1) -->
         <div class="mb-3">
             <label class="form-label fw-bold">Capacity</label>
             <input type="number" min="1" class="form-control" name="capacity" required>
         </div>
 
+        <!-- Submit button -->
         <button class="btn btn-primary w-100 mt-3">Save Event</button>
     </form>
 </div>
 
+<!-- Include the footer -->
 <%- include('../partials/footer') %>

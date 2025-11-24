@@ -1,42 +1,60 @@
+<!-- Shared header (navbar, theme toggle, etc.) -->
 <%- include('../partials/header') %>
 
 <div class="container py-4">
+
+    <!-- Page Title with dynamic event name -->
     <h2 class="mb-4">Guest List for <%= event.name %></h2>
 
+    <!-- Top buttons: Add Guest + Back to Events -->
     <div class="d-flex justify-content-between mb-3">
         <a href="/events/<%= event._id %>/guests/add" class="btn btn-primary">Add Guest</a>
         <a href="/events" class="btn btn-secondary">Back to Events</a>
     </div>
 
+    <!-- If event has no guests, show message -->
     <% if (guests.length === 0) { %>
         <p class="text-muted">No guests added yet.</p>
+
     <% } else { %>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>RSVP</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% guests.forEach(g => { %>
+        <!-- Guest Table -->
+        <table class="table table-bordered">
+
+            <thead>
                 <tr>
-                    <td><%= g.name %></td>
-                    <td><%= g.email %></td>
-                    <td><%= g.phone %></td>
-                    <td><%= g.rsvp %></td>
-                    <td>
-                        <a href="/events/<%= event._id %>/guests/edit/<%= g._id %>" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="/events/<%= event._id %>/guests/delete/<%= g._id %>" class="btn btn-danger btn-sm">Delete</a>
-                    </td>
+                    <!-- Column headers -->
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>RSVP</th>
+                    <th>Actions</th>
                 </tr>
-            <% }) %>
-        </tbody>
-    </table>
+            </thead>
+
+            <tbody>
+                <!-- Loop through each guest and display a row -->
+                <% guests.forEach(g => { %>
+                    <tr>
+                        <td><%= g.name %></td>
+                        <td><%= g.email %></td>
+                        <td><%= g.phone %></td>
+                        <td><%= g.rsvp %></td>
+
+                        <!-- Action buttons -->
+                        <td>
+                            <a href="/events/<%= event._id %>/guests/edit/<%= g._id %>" 
+                               class="btn btn-warning btn-sm">Edit</a>
+
+                            <a href="/events/<%= event._id %>/guests/delete/<%= g._id %>" 
+                               class="btn btn-danger btn-sm delete-confirm">Delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+
+        </table>
     <% } %>
 </div>
 
+<!-- Footer -->
 <%- include('../partials/footer') %>

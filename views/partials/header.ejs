@@ -1,20 +1,43 @@
+<!-- 
+    HEADER PARTIAL
+    This file contains:
+    - HTML document structure
+    - Bootstrap + custom CSS links
+    - Dark/Light mode logic using localStorage
+    - Navigation bar for the entire site
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Event Guest List Manager</title>
 
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+        rel="stylesheet"
+    >
 
     <script>
-        // Apply theme before render
+        /* 
+           THEME HANDLING SCRIPT
+           - Checks saved theme in localStorage
+           - Applies light or dark mode BEFORE rendering page (prevents flicker)
+        */
+
         const savedTheme = localStorage.getItem("theme");
+
+        // Apply saved mode to <html> element
         if (savedTheme === "dark") {
             document.documentElement.classList.add("dark-mode");
         } else {
             document.documentElement.classList.add("light-mode");
         }
 
+        // Toggle between light & dark mode
         function toggleTheme() {
             const html = document.documentElement;
             const btn = document.querySelector(".theme-btn");
@@ -32,9 +55,11 @@
             }
         }
 
+        // Update button text after page loads
         window.onload = () => {
             const btn = document.querySelector(".theme-btn");
-            btn.textContent = localStorage.getItem("theme") === "dark"
+            btn.textContent = 
+                localStorage.getItem("theme") === "dark"
                 ? "Light Mode"
                 : "Dark Mode";
         };
@@ -43,21 +68,39 @@
 
 <body>
 
+<!-- 
+    NAVIGATION BAR 
+    - Uses Bootstrap responsive navbar
+    - Includes brand link
+    - Includes Theme Toggle button
+-->
 <nav class="navbar navbar-expand-lg bg-light shadow-sm py-3 main-nav">
   <div class="container">
+
+    <!-- Brand logo/title -->
     <a class="navbar-brand fw-bold" href="/events">Guest Manager</a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+    <!-- Mobile collapse toggle -->
+    <button 
+        class="navbar-toggler" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navMenu">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navMenu">
       
-      <!-- EMPTY UL (keeps proper spacing; prevents layout break) -->
+      <!-- 
+          EMPTY UL 
+          This is intentionally left blank to push the theme button to the right.
+      -->
       <ul class="navbar-nav ms-auto me-3"></ul>
 
-      <!-- Theme Toggle -->
-      <button onclick="toggleTheme()" class="btn btn-outline-secondary btn-sm theme-btn">
+      <!-- Theme switch button -->
+      <button 
+          onclick="toggleTheme()" 
+          class="btn btn-outline-secondary btn-sm theme-btn">
         Dark Mode
       </button>
 
@@ -65,4 +108,5 @@
   </div>
 </nav>
 
+<!-- Page wrapper -->
 <div class="container py-5 page-container">

@@ -1,6 +1,9 @@
-/* ------------------------------------------
+/* ==========================================================
    THEME VARIABLES
-------------------------------------------- */
+   These CSS variables power the light mode and dark mode.
+   JavaScript toggles between html.light-mode and html.dark-mode.
+   ========================================================== */
+
 html.light-mode {
     --bg: #f5f5f5;
     --text: #222;
@@ -27,9 +30,11 @@ html.dark-mode {
     --card-border: #444;
 }
 
-/* ------------------------------------------
-   GLOBAL
-------------------------------------------- */
+/* ==========================================================
+   GLOBAL ELEMENT STYLING
+   Applies global background/text colors based on theme.
+   ========================================================== */
+
 html, body {
     height: 100%;
 }
@@ -43,13 +48,15 @@ body {
     transition: background .25s, color .25s;
 }
 
+/* Ensure all text respects theme variables */
 p, span, h1, h2, h3, h4, h5, h6, small {
     color: var(--text) !important;
 }
 
-/* ------------------------------------------
-   NAVBAR
-------------------------------------------- */
+/* ==========================================================
+   NAVBAR STYLES
+   ========================================================== */
+
 .main-nav {
     background: var(--nav-bg) !important;
     border-bottom: 1px solid var(--border);
@@ -60,28 +67,32 @@ p, span, h1, h2, h3, h4, h5, h6, small {
     color: var(--nav-text) !important;
 }
 
+/* Theme toggle button styled based on active mode */
 .theme-btn {
     color: var(--nav-text) !important;
     border-color: var(--nav-text) !important;
 }
 
-/* Fix .bg-light Bleeding White in Dark Mode */
+/* Fix Bootstrap .bg-light from appearing white in dark mode */
 html.dark-mode .bg-light {
     background-color: var(--nav-bg) !important;
     color: var(--nav-text) !important;
 }
 
-/* ------------------------------------------
+/* ==========================================================
    PAGE CONTAINER
-------------------------------------------- */
+   ========================================================== */
+
 .page-container {
     min-height: 70vh;
     padding-top: 2rem;
 }
 
-/* ------------------------------------------
-   EVENT DASHBOARD STYLES
-------------------------------------------- */
+/* ==========================================================
+   EVENT DASHBOARD CARDS
+   Each event is displayed in a responsive card layout.
+   ========================================================== */
+
 .event-card {
     background: var(--card) !important;
     color: var(--text) !important;
@@ -90,11 +101,12 @@ html.dark-mode .bg-light {
     border-radius: 6px;
 }
 
+/* Lift card slightly on hover for modern UI feel */
 .event-card:hover {
     transform: translateY(-3px);
 }
 
-/* Capacity bar */
+/* Visual capacity bar for events */
 .capacity-bar {
     width: 100%;
     height: 10px;
@@ -105,12 +117,14 @@ html.dark-mode .bg-light {
 
 .capacity-fill {
     height: 100%;
-    background: #0d6efd;
+    background: #0d6efd; /* Bootstrap primary blue */
 }
 
-/* ------------------------------------------
-   STATS BOXES
-------------------------------------------- */
+/* ==========================================================
+   REUSABLE STATS BOXES
+   (If used for additional widgets)
+   ========================================================== */
+
 .stats-box {
     background: var(--card) !important;
     color: var(--text) !important;
@@ -118,9 +132,11 @@ html.dark-mode .bg-light {
     border-radius: 6px;
 }
 
-/* ------------------------------------------
-   TABLES
-------------------------------------------- */
+/* ==========================================================
+   TABLE STYLING
+   Applies theme-based coloring + hover effects.
+   ========================================================== */
+
 table {
     background-color: var(--card) !important;
     color: var(--text) !important;
@@ -141,13 +157,15 @@ tbody tr {
     color: var(--text) !important;
 }
 
+/* Row hover effect */
 tbody tr:hover td {
     background-color: var(--table-header) !important;
 }
 
-/* ------------------------------------------
-   FORMS
-------------------------------------------- */
+/* ==========================================================
+   FORMS & FORM INPUT ELEMENTS
+   ========================================================== */
+
 form,
 .card {
     background: var(--card) !important;
@@ -174,7 +192,7 @@ textarea::placeholder {
     opacity: 0.6;
 }
 
-/* Fix bottom white corner */
+/* Fix Bootstrap elements in dark mode */
 html.dark-mode .bg-white,
 html.dark-mode .shadow-sm,
 html.dark-mode .card,
@@ -183,9 +201,11 @@ html.dark-mode form {
     border-color: var(--card-border) !important;
 }
 
-/* ------------------------------------------
+/* ==========================================================
    BUTTONS
-------------------------------------------- */
+   Ensures text stays visible across themes.
+   ========================================================== */
+
 .btn-primary,
 .btn-warning,
 .btn-danger,
@@ -193,7 +213,7 @@ html.dark-mode form {
     color: #fff !important;
 }
 
-/* Pagination buttons */
+/* Pagination buttons styling */
 #pagination button {
     border-radius: 4px;
     border: 1px solid var(--border);
@@ -205,9 +225,10 @@ html.dark-mode form {
     background: var(--table-header);
 }
 
-/* ------------------------------------------
+/* ==========================================================
    FOOTER
-------------------------------------------- */
+   ========================================================== */
+
 .footer-bar {
     background: var(--footer-bg) !important;
     color: var(--text) !important;
@@ -215,15 +236,18 @@ html.dark-mode form {
     padding: 1rem;
     text-align: center;
 }
-/* ------------------------------------------
-   FIX: Text-muted should follow theme colors
-------------------------------------------- */
+
+/* ==========================================================
+   FIXES & MISC STYLES
+   ========================================================== */
+
+/* Make text-muted respect theme colors */
 .text-muted {
     color: var(--text) !important;
     opacity: 0.6 !important;
 }
 
-/* Fix all text inside event cards in dark mode */
+/* Fix text colors inside event cards */
 .event-card p,
 .event-card small,
 .event-card span,
@@ -233,12 +257,12 @@ html.dark-mode form {
     color: var(--text) !important;
 }
 
-/* Fix capacity bar color */
+/* Capacity bar background fix */
 .capacity-bar {
     background: var(--table-header) !important;
 }
 
-/* Fix divider/line inside cards */
+/* Divider inside cards should match theme */
 .event-card hr {
     background: var(--table-header) !important;
     height: 5px;

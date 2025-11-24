@@ -1,37 +1,67 @@
+<!-- Shared header includes nav + theme toggle + linked CSS/JS -->
 <%- include('../partials/header') %>
 
 <div class="container mt-5" style="max-width: 700px;">
+
+    <!-- Page Title -->
     <h2 class="mb-4">Edit Event</h2>
 
+    <!-- 
+        Event Edit Form
+        Method: POST → handled by POST /events/edit/:eventId
+        Pre-filled using EJS values from the event object.
+    -->
     <form method="POST" class="p-4 shadow-sm rounded bg-white dark:bg-dark card-border">
+
+        <!-- Event Name -->
         <div class="mb-3">
             <label class="form-label fw-bold">Event Name</label>
             <input class="form-control" name="name" value="<%= event.name %>" required>
         </div>
 
+        <!-- Event Description -->
         <div class="mb-3">
             <label class="form-label fw-bold">Description</label>
             <textarea class="form-control" name="description" rows="3"><%= event.description %></textarea>
         </div>
 
+        <!-- Event Location -->
         <div class="mb-3">
             <label class="form-label fw-bold">Location</label>
             <input class="form-control" name="location" value="<%= event.location %>">
         </div>
 
+        <!-- Event Date 
+             Converts MongoDB date → YYYY-MM-DD for HTML <input type="date">
+        -->
         <div class="mb-3">
             <label class="form-label fw-bold">Date</label>
-            <input type="date" class="form-control" name="date"
-                value="<%= event.date.toISOString().split('T')[0] %>" required>
+            <input 
+                type="date"
+                class="form-control"
+                name="date"
+                value="<%= event.date.toISOString().split('T')[0] %>"
+                required
+            >
         </div>
 
+        <!-- Capacity -->
         <div class="mb-3">
             <label class="form-label fw-bold">Capacity</label>
-            <input type="number" min="1" class="form-control" name="capacity" value="<%= event.capacity %>" required>
+            <input 
+                type="number"
+                min="1"
+                class="form-control"
+                name="capacity"
+                value="<%= event.capacity %>"
+                required
+            >
         </div>
 
+        <!-- Submit button -->
         <button class="btn btn-primary w-100 mt-3">Update Event</button>
     </form>
 </div>
 
+<!-- Shared footer -->
 <%- include('../partials/footer') %>

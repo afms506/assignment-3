@@ -1,35 +1,48 @@
+<!-- Shared header layout (navigation, theme toggle, CSS includes) -->
 <%- include('../partials/header') %>
 
 <div class="container py-4">
+    <!-- Page Title showing the event name dynamically -->
     <h2 class="mb-4">Add Guest to <%= event.name %></h2>
 
+    <!--
+        ADD GUEST FORM
+        This form posts to POST /events/:eventId/guests/add
+        and creates a new guest for the selected event.
+    -->
     <form method="POST" class="p-4 shadow-sm" style="max-width: 600px; margin: auto;">
+
+        <!-- Guest Name (required) -->
         <div class="mb-3">
             <label class="form-label">Full Name</label>
             <input class="form-control" name="name" required>
         </div>
 
+        <!-- Guest Email (optional) -->
         <div class="mb-3">
             <label class="form-label">Email</label>
             <input class="form-control" name="email">
         </div>
 
+        <!-- Guest Phone (optional) -->
         <div class="mb-3">
             <label class="form-label">Phone</label>
             <input class="form-control" name="phone">
         </div>
 
+        <!-- RSVP selection -->
         <div class="mb-3">
             <label class="form-label">RSVP</label>
             <select class="form-control" name="rsvp">
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
-                <option value="Maybe">Maybe</option>
             </select>
         </div>
 
+        <!-- Submit button -->
         <button class="btn btn-primary w-100">Save</button>
     </form>
 </div>
 
+<!-- Shared footer -->
 <%- include('../partials/footer') %>
