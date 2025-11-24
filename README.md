@@ -48,8 +48,7 @@ Version Control: Git & GitHub
 Deployment: Render / Azure / Heroku
 Environment Config: dotenv
 
-Project Structure
-controllers/
+Project Structurecontrollers/
    eventController.js
    guestController.js
 models/
@@ -65,13 +64,16 @@ routes/
    eventRoutes.js
    guestRoutes.js
 views/
-   events/add.ejs
-   events/edit.ejs
-   guests/add.ejs
-   guests/edit.ejs
-   guests/list.ejs
-   partials/header.ejs
-   partials/footer.ejs
+   events/
+      add.ejs
+      edit.ejs
+   guests/
+      add.ejs
+      edit.ejs
+      list.ejs
+   partials/
+      footer.ejs
+      header.ejs
    index.ejs
 .env
 app.js
@@ -148,3 +150,4 @@ Code Commenting – Complete
 .env and .gitignore – Complete
 GitHub Repository – Complete
 Cloud Deployment – Complete
+
