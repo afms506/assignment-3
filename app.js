@@ -20,8 +20,8 @@ app.set("views", path.join(__dirname, "views"));
 
 // ---------------------
 // DATABASE CONNECTION
-// -----------------------
-mongoose.connect(process.env.MONGO_URI)
+// ---------------------
+mongoose.connect(process.env.MONGO_URL)
     .then(() => console.log("MongoDB connected"))
     .catch((err) => console.log("MongoDB error:", err));
 
