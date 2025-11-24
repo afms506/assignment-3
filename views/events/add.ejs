@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+
+<div class="container mt-5" style="max-width: 700px;">
+    <h2 class="mb-4">Add Event</h2>
+
+    <form method="POST" class="p-4 shadow-sm rounded bg-white dark:bg-dark card-border">
+        <div class="mb-3">
+            <label class="form-label fw-bold">Event Name</label>
+            <input class="form-control" name="name" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Description</label>
+            <textarea class="form-control" name="description" rows="3"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Location</label>
+            <input class="form-control" name="location">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Date</label>
+            <input type="date" class="form-control" name="date" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Capacity</label>
+            <input type="number" min="1" class="form-control" name="capacity" required>
+        </div>
+
+        <button class="btn btn-primary w-100 mt-3">Save Event</button>
+    </form>
+</div>
+
+<%- include('../partials/footer') %>

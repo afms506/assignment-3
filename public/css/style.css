@@ -1,0 +1,247 @@
+/* ------------------------------------------
+   THEME VARIABLES
+------------------------------------------- */
+html.light-mode {
+    --bg: #f5f5f5;
+    --text: #222;
+    --card: #ffffff;
+    --nav-bg: #ffffff;
+    --nav-text: #222;
+    --table-header: #e3e7ed;
+    --table-row: #ffffff;
+    --border: #dcdcdc;
+    --footer-bg: #f8f9fa;
+    --card-border: #e0e0e0;
+}
+
+html.dark-mode {
+    --bg: #1e1e1e;
+    --text: #e6e6e6;
+    --card: #2a2a2a;
+    --nav-bg: #2c2c2c;
+    --nav-text: #e6e6e6;
+    --table-header: #3a3a3a;
+    --table-row: #2c2c2c;
+    --border: #555;
+    --footer-bg: #222;
+    --card-border: #444;
+}
+
+/* ------------------------------------------
+   GLOBAL
+------------------------------------------- */
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: var(--bg) !important;
+    color: var(--text) !important;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    transition: background .25s, color .25s;
+}
+
+p, span, h1, h2, h3, h4, h5, h6, small {
+    color: var(--text) !important;
+}
+
+/* ------------------------------------------
+   NAVBAR
+------------------------------------------- */
+.main-nav {
+    background: var(--nav-bg) !important;
+    border-bottom: 1px solid var(--border);
+}
+
+.main-nav .nav-link,
+.main-nav .navbar-brand {
+    color: var(--nav-text) !important;
+}
+
+.theme-btn {
+    color: var(--nav-text) !important;
+    border-color: var(--nav-text) !important;
+}
+
+/* Fix .bg-light Bleeding White in Dark Mode */
+html.dark-mode .bg-light {
+    background-color: var(--nav-bg) !important;
+    color: var(--nav-text) !important;
+}
+
+/* ------------------------------------------
+   PAGE CONTAINER
+------------------------------------------- */
+.page-container {
+    min-height: 70vh;
+    padding-top: 2rem;
+}
+
+/* ------------------------------------------
+   EVENT DASHBOARD STYLES
+------------------------------------------- */
+.event-card {
+    background: var(--card) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--card-border) !important;
+    transition: background .25s, color .25s, transform .2s;
+    border-radius: 6px;
+}
+
+.event-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Capacity bar */
+.capacity-bar {
+    width: 100%;
+    height: 10px;
+    background: var(--table-header);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.capacity-fill {
+    height: 100%;
+    background: #0d6efd;
+}
+
+/* ------------------------------------------
+   STATS BOXES
+------------------------------------------- */
+.stats-box {
+    background: var(--card) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 6px;
+}
+
+/* ------------------------------------------
+   TABLES
+------------------------------------------- */
+table {
+    background-color: var(--card) !important;
+    color: var(--text) !important;
+    border-color: var(--border) !important;
+    border-radius: 6px !important;
+    overflow: hidden;
+}
+
+thead, thead th {
+    background-color: var(--table-header) !important;
+    color: var(--text) !important;
+}
+
+tbody tr td,
+tbody tr {
+    background-color: var(--table-row) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+}
+
+tbody tr:hover td {
+    background-color: var(--table-header) !important;
+}
+
+/* ------------------------------------------
+   FORMS
+------------------------------------------- */
+form,
+.card {
+    background: var(--card) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 6px;
+}
+
+label, .form-label {
+    color: var(--text) !important;
+}
+
+input,
+select,
+textarea {
+    background: var(--table-row) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text) !important;
+    opacity: 0.6;
+}
+
+/* Fix bottom white corner */
+html.dark-mode .bg-white,
+html.dark-mode .shadow-sm,
+html.dark-mode .card,
+html.dark-mode form {
+    background-color: var(--card) !important;
+    border-color: var(--card-border) !important;
+}
+
+/* ------------------------------------------
+   BUTTONS
+------------------------------------------- */
+.btn-primary,
+.btn-warning,
+.btn-danger,
+.btn-secondary {
+    color: #fff !important;
+}
+
+/* Pagination buttons */
+#pagination button {
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+}
+
+#pagination button:hover {
+    background: var(--table-header);
+}
+
+/* ------------------------------------------
+   FOOTER
+------------------------------------------- */
+.footer-bar {
+    background: var(--footer-bg) !important;
+    color: var(--text) !important;
+    border-top: 1px solid var(--border);
+    padding: 1rem;
+    text-align: center;
+}
+/* ------------------------------------------
+   FIX: Text-muted should follow theme colors
+------------------------------------------- */
+.text-muted {
+    color: var(--text) !important;
+    opacity: 0.6 !important;
+}
+
+/* Fix all text inside event cards in dark mode */
+.event-card p,
+.event-card small,
+.event-card span,
+.event-card h1,
+.event-card h2,
+.event-card h3 {
+    color: var(--text) !important;
+}
+
+/* Fix capacity bar color */
+.capacity-bar {
+    background: var(--table-header) !important;
+}
+
+/* Fix divider/line inside cards */
+.event-card hr {
+    background: var(--table-header) !important;
+    height: 5px;
+    border: none;
+    border-radius: 5px;
+}

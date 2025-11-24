@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+
+<div class="container mt-5" style="max-width: 700px;">
+    <h2 class="mb-4">Edit Event</h2>
+
+    <form method="POST" class="p-4 shadow-sm rounded bg-white dark:bg-dark card-border">
+        <div class="mb-3">
+            <label class="form-label fw-bold">Event Name</label>
+            <input class="form-control" name="name" value="<%= event.name %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Description</label>
+            <textarea class="form-control" name="description" rows="3"><%= event.description %></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Location</label>
+            <input class="form-control" name="location" value="<%= event.location %>">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Date</label>
+            <input type="date" class="form-control" name="date"
+                value="<%= event.date.toISOString().split('T')[0] %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Capacity</label>
+            <input type="number" min="1" class="form-control" name="capacity" value="<%= event.capacity %>" required>
+        </div>
+
+        <button class="btn btn-primary w-100 mt-3">Update Event</button>
+    </form>
+</div>
+
+<%- include('../partials/footer') %>

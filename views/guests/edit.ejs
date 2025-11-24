@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+
+<div class="container py-4">
+    <h2 class="mb-4">Edit Guest for <%= event.name %></h2>
+
+    <form method="POST" class="p-4 shadow-sm" style="max-width: 600px; margin: auto;">
+        <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input class="form-control" name="name" value="<%= guest.name %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input class="form-control" name="email" value="<%= guest.email %>">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input class="form-control" name="phone" value="<%= guest.phone %>">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">RSVP</label>
+            <select class="form-control" name="rsvp">
+                <option <%= guest.rsvp === "Yes" ? "selected" : "" %> value="Yes">Yes</option>
+                <option <%= guest.rsvp === "No" ? "selected" : "" %> value="No">No</option>
+                <option <%= guest.rsvp === "Maybe" ? "selected" : "" %> value="Maybe">Maybe</option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary w-100">Save</button>
+    </form>
+</div>
+
+<%- include('../partials/footer') %>
