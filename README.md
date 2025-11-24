@@ -145,14 +145,21 @@ Routing Overview
 
 Event Routes
 GET /events – List all events
+
 GET /events/add – Add event form
+
 POST /events/add – Create event
+
 GET /events/edit/:id – Edit event form
+
 POST /events/edit/:id – Update event
+
 GET /events/delete/:id – Confirm delete
+
 POST /events/delete/:id – Delete event
 
 Guest Routes
+
 Same CRUD structure, tied to an event's guest list.
 
 UI Design
@@ -179,5 +186,6 @@ Code Commenting – Complete
 .env and .gitignore – Complete
 GitHub Repository – Complete
 Cloud Deployment – Complete
+
 
 
