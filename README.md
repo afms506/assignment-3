@@ -49,34 +49,63 @@ Deployment: Render / Azure / Heroku
 Environment Config: dotenv
 
 Project Structurecontrollers/
+
    eventController.js
+
    guestController.js
+
 models/
+
    Event.js
+   
    Guest.js
+
 public/
+
    css/style.css
+   
    js/deleteConfirm.js
+   
    js/pagination.js
+   
    js/search.js
+   
    js/tableSort.js
+
 routes/
+
    eventRoutes.js
+   
    guestRoutes.js
+
 views/
+
    events/
+   
       add.ejs
+      
       edit.ejs
+   
    guests/
+   
       add.ejs
+      
       edit.ejs
+      
       list.ejs
+   
    partials/
+   
       footer.ejs
+      
       header.ejs
+   
    index.ejs
+
 .env
+
 app.js
+
 package.json
 
 Installation and Setup
@@ -150,4 +179,5 @@ Code Commenting – Complete
 .env and .gitignore – Complete
 GitHub Repository – Complete
 Cloud Deployment – Complete
+
 
